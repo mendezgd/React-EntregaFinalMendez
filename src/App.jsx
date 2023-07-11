@@ -41,18 +41,18 @@ function App() {
 
       {mostrarDetalle ? (
         <>
-          <Detalle {...detalleProducto}/>
+          <Detalle {...detalleProducto} />
         </>
       ) : (
         <>
           <div className="container text-center">
-            <div className='row rows-2'>
-              {
-                productos.map((producto) => (
-                  <Cards {...producto} detalleOn={detalleOn} />
-                ))
-              }
-            </div>
+            <div class="row">
+                {
+                  productos.map((producto) => (
+                    <Cards {...producto} detalleOn={detalleOn} />
+                  ))
+                }
+              </div>
           </div>
         </>
       )

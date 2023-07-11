@@ -1,14 +1,13 @@
 img {
     filter: brightness(50%);
     transition: all 1s ease;
-    
+
 }
 
 img:hover {
     filter: brightness(100%);
-    
-}
 
+}
 
 .col {
     margin: 0.3rem;

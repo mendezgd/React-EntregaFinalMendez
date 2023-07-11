@@ -41,7 +41,7 @@ function App() {
 
       {mostrarDetalle ? (
         <>
-          <button onClick={()=> setMostrarDetalle(false)} type="button" className="btn btn-secondary volver">Volver</button>
+          <button onClick={() => setMostrarDetalle(false)} type="button" className="btn btn-secondary volver">Volver</button>
           <Detalle {...detalleProducto} />
         </>
       ) : (

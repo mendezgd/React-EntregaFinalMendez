@@ -3,11 +3,19 @@ import './App.css';
 import Header from './components/Header';
 import Navbar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import Cards from './components/Cards/Cards';
+import Cards from './components/productos/Cards/Cards';
+import Detalle from './components/productos/Detalles/Detalle';
 
 function App() {
   const [productos, setProductos] = useState([]);
+  const [mostrarDetalle, setMostrarDetalle] = useState(false);
+  const [detalleProducto, setDetalleProducto] = useState({});
 
+  const detalleOn = (id) => {
+    setMostrarDetalle(true);
+    const encontrarProducto = productos.find((producto) => producto.id === id);
+    setDetalleProducto(encontrarProducto);
+  }
   useEffect(() => {
     const getProductos = async () => {
       try {
@@ -21,7 +29,7 @@ function App() {
         console.error(error);
       }
     };
-  
+
     getProductos();
   }, []);
 
@@ -30,17 +38,28 @@ function App() {
       <Header titulo="Peladingui Gunshop" logo={<img src="./media/testpela.png" className="logo" alt="logo de la empresa" />} />
       <Navbar />
       <ItemListContainer greeting="Hola Bienvenido!" />
-      <div className="container text-center">
-        <div className='row rows-2'>
-          {
-            productos.map((producto) => (
-              <Cards {...producto} />
-            ))
-          }
-        </div>
-      </div>
+
+      {mostrarDetalle ? (
+        <>
+          <Detalle {...detalleProducto}/>
+        </>
+      ) : (
+        <>
+          <div className="container text-center">
+            <div className='row rows-2'>
+              {
+                productos.map((producto) => (
+                  <Cards {...producto} detalleOn={detalleOn} />
+                ))
+              }
+            </div>
+          </div>
+        </>
+      )
+      }
     </>
   );
 }
+
 
 export default App;

@@ -1,5 +1,5 @@
 import React from "react";
-import CarroBtn from "./CartWidget";
+import CartWidget from "./CartWidget";
 import './style.css';
 
 const Navbar = () => {
@@ -16,15 +16,10 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <a className="nav-link" href="/">Inicio</a>
                             </li>
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <li className="nav-item">
+                                <a className="nav-link" href="/">
                                     Productos
                                 </a>
-                                <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="#">Pistolas</a></li>
-                                    <li><a className="dropdown-item" href="#">Rifles</a></li>
-                                    <li><a className="dropdown-item" href="#">Escopetas</a></li>
-                                </ul>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="/">Requisitos</a>
@@ -36,7 +31,7 @@ const Navbar = () => {
                                 <a className="nav-link" href="/">Galería de Tiro</a>
                             </li>
                             <li className="nav-item">
-                                <CarroBtn />
+                                <CartWidget />
                             </li>
                         </ul>
                     </div>

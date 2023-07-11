@@ -1,7 +1,7 @@
 import React from "react";
 import './style.css';
 
-const CarroBtn = () => {
+const CartWidget = () => {
     return (
         <>
             <div className="containerCarro">
@@ -14,4 +14,4 @@ const CarroBtn = () => {
     )
 }
 
-export default CarroBtn
+export default CartWidget;

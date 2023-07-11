@@ -41,18 +41,19 @@ function App() {
 
       {mostrarDetalle ? (
         <>
+          <button onClick={()=> setMostrarDetalle(false)} type="button" className="btn btn-secondary volver">Volver</button>
           <Detalle {...detalleProducto} />
         </>
       ) : (
         <>
           <div className="container text-center">
-            <div class="row">
-                {
-                  productos.map((producto) => (
-                    <Cards {...producto} detalleOn={detalleOn} />
-                  ))
-                }
-              </div>
+            <div className="row">
+              {
+                productos.map((producto) => (
+                  <Cards key={producto.id} {...producto} detalleOn={detalleOn} />
+                ))
+              }
+            </div>
           </div>
         </>
       )
@@ -60,6 +61,5 @@ function App() {
     </>
   );
 }
-
 
 export default App;

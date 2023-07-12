@@ -1,63 +1,26 @@
 import React, { useState, useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import ItemListContainer from './pages/ItemListContainer';
+import Header from './components/header/Header';
 import './App.css';
-import Header from './components/Header';
-import Navbar from './components/NavBar';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import Cards from './components/productos/Cards/Cards';
-import Detalle from './components/productos/Detalles/Detalle';
+import Requisitos from './pages/requisitos/requisitos';
+import Donde from './pages/donde/donde';
+import Navbar from './components/navbar/NavBar';
+import ItemDetailContainer from './components/productos/ItemDetailContainer/ItemDetailContainer';
 
 function App() {
-  const [productos, setProductos] = useState([]);
-  const [mostrarDetalle, setMostrarDetalle] = useState(false);
-  const [detalleProducto, setDetalleProducto] = useState({});
-
-  const detalleOn = (id) => {
-    setMostrarDetalle(true);
-    const encontrarProducto = productos.find((producto) => producto.id === id);
-    setDetalleProducto(encontrarProducto);
-  }
-  useEffect(() => {
-    const getProductos = async () => {
-      try {
-        const response = await fetch('/productos/productos.json', {
-          method: 'GET',
-        });
-
-        const data = await response.json();
-        setProductos(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getProductos();
-  }, []);
 
   return (
     <>
       <Header titulo="Peladingui Gunshop" logo={<img src="./media/testpela.png" className="logo" alt="logo de la empresa" />} />
       <Navbar />
-      <ItemListContainer greeting="Hola Bienvenido!" />
+      <Routes>
+        <Route path='/' element={<ItemListContainer />} />
+        <Route path='/item/:id' element={<ItemDetailContainer />} />
+        <Route path='/requisitos' element={<Requisitos />} />
+        <Route path='/donde' element={<Donde />} />
+      </Routes>
 
-      {mostrarDetalle ? (
-        <>
-          <button onClick={() => setMostrarDetalle(false)} type="button" className="btn btn-secondary volver">Volver</button>
-          <Detalle {...detalleProducto} />
-        </>
-      ) : (
-        <>
-          <div className="container text-center">
-            <div className="row">
-              {
-                productos.map((producto) => (
-                  <Cards key={producto.id} {...producto} detalleOn={detalleOn} />
-                ))
-              }
-            </div>
-          </div>
-        </>
-      )
-      }
     </>
   );
 }

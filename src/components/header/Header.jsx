@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './style.css';
 
 const Header = ({ titulo, logo }) => {
@@ -6,7 +7,7 @@ const Header = ({ titulo, logo }) => {
         <>
             <div className="header">
                 <h1>{titulo}</h1>
-                <a href="">{logo}</a>
+                <Link to ="/">{logo}</Link>
             </div>
         </>
     )

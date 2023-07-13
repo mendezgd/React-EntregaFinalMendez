@@ -1,33 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cards from '../../components/productos/Cards/Cards';
 import './style.css';
+import { useFetch } from '../../components/Constantes/Hooks/useFetch';
 
 function ItemListContainer() {
-  const [productos, setProductos] = useState([]);
   const navigate = useNavigate();
-
+  const { data: productos } = useFetch();
+  
   const detalleOn = (id) => {
     navigate(`/item/${id}`);
   }
-
-
-  useEffect(() => {
-    const getProductos = async () => {
-      try {
-        const response = await fetch('/productos/productos.json', {
-          method: 'GET',
-        });
-
-        const data = await response.json();
-        setProductos(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getProductos();
-  }, []);
 
   return (
     <>

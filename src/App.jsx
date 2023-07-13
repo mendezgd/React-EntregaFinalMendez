@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import ItemListContainer from './pages/ItemListContainer';
 import Header from './components/header/Header';
-import './App.css';
 import Requisitos from './pages/requisitos/requisitos';
 import Donde from './pages/donde/donde';
 import Navbar from './components/navbar/NavBar';
-import ItemDetailContainer from './components/productos/ItemDetailContainer/ItemDetailContainer';
+import './App.css';
+import ItemDetailContainer from './pages/ItemDetailContainer/ItemDetailContainer';
+
 
 function App() {
 
@@ -16,11 +17,10 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<ItemListContainer />} />
-        <Route path='/item/:id' element={<ItemDetailContainer />} />
+        <Route path='/item/:Id' element={<ItemDetailContainer />} />
         <Route path='/requisitos' element={<Requisitos />} />
         <Route path='/donde' element={<Donde />} />
       </Routes>
-
     </>
   );
 }

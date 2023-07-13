@@ -1,10 +1,8 @@
 import React from 'react';
-import './style.css';
 
-function ItemDetailContainer({ img, nombre, precio, descripcion }) {
-  
+function ItemDetailCard({ img, nombre, precio, descripcion }) {
+
   return (
-    
     <div className="card m-1">
       <h4>DETALLES DEL PRODUCTO</h4>
       <div className="row g-0">
@@ -28,4 +26,4 @@ function ItemDetailContainer({ img, nombre, precio, descripcion }) {
   );
 }
 
-export default ItemDetailContainer;
+export default ItemDetailCard;

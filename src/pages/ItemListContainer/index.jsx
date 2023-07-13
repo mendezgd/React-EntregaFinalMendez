@@ -4,7 +4,6 @@ import './style.css';
 import { useFetch } from '../../components/Constantes/Hooks/useFetch';
 
 function ItemListContainer() {
-
   const { data: productos } = useFetch('/productos/productos.json', {
     method: 'GET',
     header: {

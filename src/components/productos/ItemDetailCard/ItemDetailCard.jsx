@@ -12,7 +12,7 @@ function ItemDetailCard({img, nombre, precio, descripcion, categoria }) {
           <div className="card-body">
             <h5 className="card-title">{nombre}</h5>
             <p className="card-text">{descripcion}</p>
-            <p className='text'>{categoria}</p>
+            <p className='text'>Categoria:{categoria}</p>
           </div>
         </div>
         <div className="col-md-2">

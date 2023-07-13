@@ -11,13 +11,13 @@ function ItemDetailContainer() {
     },
   });
 
-  const producto = productos.find((producto) => producto.id === id);
-  console.log(producto);
+  const producto = productos.find((producto) => producto.id === parseInt(id));
+ 
   return (
     <>
       <div>
         <h3>Detalles de producto</h3>
-        {producto && <ItemDetailCard id={producto.id} />}
+        {producto && <ItemDetailCard {...producto} />}
       </div>
     </>
   );

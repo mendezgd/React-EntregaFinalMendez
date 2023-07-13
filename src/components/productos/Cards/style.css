@@ -12,3 +12,8 @@ img:hover {
 .col {
     margin: 0.3rem;
 }
+
+
+.card-body {
+    background-color: #dad7cd;
+}

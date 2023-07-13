@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
 
-function Cards({ id, img, nombre, precio }) {
+function Cards({ id, img, nombre, precio, categoria }) {
   return (
     <div className='col'>
       <div className="card" style={{ width: '18rem' }}>
@@ -13,6 +13,7 @@ function Cards({ id, img, nombre, precio }) {
             <button className='btn btn-secondary'>Detalles</button>
           </Link>
           <p>Precio: (en USD) ${precio}</p>
+          <p>Categoria: {categoria}</p>
         </div>
       </div>
     </div>

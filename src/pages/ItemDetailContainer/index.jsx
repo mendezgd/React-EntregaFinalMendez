@@ -12,14 +12,12 @@ function ItemDetailContainer() {
   });
 
   const producto = productos.find((producto) => producto.id === parseInt(id));
- 
+
   return (
-    <>
-      <div>
-        <h3>Detalles de producto</h3>
-        {producto && <ItemDetailCard {...producto} />}
-      </div>
-    </>
+    <div>
+      <h3>Detalles de producto</h3>
+      {producto && <ItemDetailCard {...producto} />}
+    </div>
   );
 }
 

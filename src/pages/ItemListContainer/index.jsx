@@ -26,7 +26,6 @@ function ItemListContainer() {
       setProductosFiltrados(productos);
     }
   }, [categoryId, productos]);
-
   return (
     <>
       <div className="container text-center">

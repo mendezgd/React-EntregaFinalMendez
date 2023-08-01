@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom';
 import ItemDetailCard from '../../components/productos/ItemDetailCard/ItemDetailCard';
 import { useFetch } from '../../components/Constantes/Hooks/useFetch';
-import { useState } from 'react';
+import { useEffect, useContext } from 'react';
+import { CartContext } from '../../contexto/contexto-carrito';
 
 function ItemDetailContainer() {
   const { id } = useParams();
@@ -12,44 +13,18 @@ function ItemDetailContainer() {
     },
   });
 
-  const [carrito, setCarrito] = useState([]);
-  const [cantidad, setCantidad] = useState(1);
-
   const producto = productos.find((producto) => producto.id === parseInt(id));
-  const stock = producto ? producto.stock : 0;
 
-  const handleIncrease = () => {
-    if (cantidad < stock) {
-      setCantidad((prevCantidad) => prevCantidad + 1);
+  const { setProductos } = useContext(CartContext);
+
+  useEffect (() => {
+    if (productos?.length > 0) {
+      setProductos(productos);
     }
-  };
+  }, [productos, setProductos]);
 
-  const handleDecrease = () => {
-    if (cantidad > 1) {
-      setCantidad((prevCantidad) => prevCantidad - 1);
-    }
-  };
 
-  const handleAddToCart = () => {
-    const itemInCarrito = carrito.find((item) => item.id === id);
-    const totalCantidadInCart = carrito.reduce((total, item) => total + item.cantidad, 0);
-
-    if (!Number.isInteger(cantidad) || cantidad <= 0 || totalCantidadInCart + cantidad > stock) {
-      return;
-    }
-
-    if (!itemInCarrito) {
-      setCarrito((currentCarrito) => [...currentCarrito, { id, nombre: producto.nombre, precio: producto.precio, cantidad }]);
-    } else {
-      setCarrito((currentCarrito) =>
-        currentCarrito.map((item) =>
-          item.id === id ? { ...item, cantidad: item.cantidad + cantidad } : item
-        )
-      );
-    }
-  };
-
-  console.log({ carrito });
+  console.log({productos});
 
   return (
     <div>
@@ -57,10 +32,7 @@ function ItemDetailContainer() {
       {producto && (
         <ItemDetailCard
           {...producto}
-          handleIncrease={handleIncrease}
-          handleDecrease={handleDecrease}
-          handleAddToCart={handleAddToCart}
-          cantidad={cantidad}
+          // If needed, you can pass any other props required by ItemDetailCard
         />
       )}
     </div>

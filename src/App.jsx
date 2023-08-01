@@ -8,6 +8,7 @@ import Navbar from './components/navbar/NavBar';
 import './App.css';
 import ItemDetailContainer from './pages/ItemDetailContainer';
 import Carrito from './pages/carrito';
+import { ProviderCarrito } from './contexto/contexto-carrito';
 
 
 
@@ -16,16 +17,18 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header titulo="Peladingui Gunshop" logo={<img src="./media/testpela.png" className="logo" alt="logo de la empresa" />} />
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<ItemListContainer />} />
-          <Route path='/item/:id' element={<ItemDetailContainer />} />
-          <Route path='/category/:categoryId' element={<ItemListContainer />} />
-          <Route path='/requisitos' element={<Requisitos />} />
-          <Route path='/donde' element={<Donde />} />
-          <Route path='/carrito' element={<Carrito />} />
-        </Routes>
+        <ProviderCarrito>
+          <Header titulo="Peladingui Gunshop" logo={<img src="./media/testpela.png" className="logo" alt="logo de la empresa" />} />
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<ItemListContainer />} />
+            <Route path='/item/:id' element={<ItemDetailContainer />} />
+            <Route path='/category/:categoryId' element={<ItemListContainer />} />
+            <Route path='/requisitos' element={<Requisitos />} />
+            <Route path='/donde' element={<Donde />} />
+            <Route path='/carrito' element={<Carrito />} />
+          </Routes>
+        </ProviderCarrito>
       </BrowserRouter>
     </>
   );

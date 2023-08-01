@@ -1,23 +1,6 @@
 import React, { useState } from "react";
 
-function ItemDetailCard({ img, nombre, precio, descripcion, categoria, stock, agregarCarrito, id }) {
-  const [cantidad, setCantidad] = useState(1);
-
-  const handleIncrease = () => {
-    if (cantidad < stock) {
-      setCantidad((prevCantidad) => prevCantidad + 1);
-    }
-  };
-
-  const handleDecrease = () => {
-    if (cantidad > 1) {
-      setCantidad((prevCantidad) => prevCantidad - 1);
-    }
-  };
-
-  const handleAddToCart = () => {
-    agregarCarrito(id, nombre, precio, cantidad);
-  };
+function ItemDetailCard({ img, nombre, precio, descripcion, categoria, stock, handleIncrease, handleDecrease, handleAddToCart, cantidad }) {
 
   return (
     <div className="card m-1">

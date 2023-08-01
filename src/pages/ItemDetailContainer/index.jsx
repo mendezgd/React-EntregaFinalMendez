@@ -13,19 +13,33 @@ function ItemDetailContainer() {
   });
 
   const [carrito, setCarrito] = useState([]);
+  const [cantidad, setCantidad] = useState(1);
 
   const producto = productos.find((producto) => producto.id === parseInt(id));
+  const stock = producto ? producto.stock : 0;
 
-  const agregarCarrito = (id, nombre, precio, cantidad) => {
-    const producto = productos.find((producto) => producto.id === id);
+  const handleIncrease = () => {
+    if (cantidad < stock) {
+      setCantidad((prevCantidad) => prevCantidad + 1);
+    }
+  };
+
+  const handleDecrease = () => {
+    if (cantidad > 1) {
+      setCantidad((prevCantidad) => prevCantidad - 1);
+    }
+  };
+
+  const handleAddToCart = () => {
     const itemInCarrito = carrito.find((item) => item.id === id);
+    const totalCantidadInCart = carrito.reduce((total, item) => total + item.cantidad, 0);
 
-    if (!Number.isInteger(cantidad) || cantidad <= 0 || cantidad > producto.stock) {
+    if (!Number.isInteger(cantidad) || cantidad <= 0 || totalCantidadInCart + cantidad > stock) {
       return;
     }
 
     if (!itemInCarrito) {
-      setCarrito((currentCarrito) => [...currentCarrito, { ...producto, cantidad }]);
+      setCarrito((currentCarrito) => [...currentCarrito, { id, nombre: producto.nombre, precio: producto.precio, cantidad }]);
     } else {
       setCarrito((currentCarrito) =>
         currentCarrito.map((item) =>
@@ -34,12 +48,21 @@ function ItemDetailContainer() {
       );
     }
   };
+
   console.log({ carrito });
 
   return (
     <div>
       <h3>Detalles de producto</h3>
-      {producto && <ItemDetailCard {...producto} agregarCarrito={agregarCarrito} />}
+      {producto && (
+        <ItemDetailCard
+          {...producto}
+          handleIncrease={handleIncrease}
+          handleDecrease={handleDecrease}
+          handleAddToCart={handleAddToCart}
+          cantidad={cantidad}
+        />
+      )}
     </div>
   );
 }

@@ -1,19 +1,12 @@
-/* import { createContext, useState } from "react";
+import { createContext, useContext, useState } from 'react';
 
-const estadoInicial = {
-    carrito: [],
-    setCarrito: () => { },
-    handleIncrease: () => { },
-    handleDecrease: () => { },
-    handleAddToCart: () => { },
-    total: 0,
-}
+const CartContext = createContext();
 
-export const CartContext = createContext(estadoInicial);
+export const useCartContext = () => useContext(CartContext);
 
-export const ProviderCarrito = ({ children }) => {
+export const CartProvider = ({ children }) => {
     const [carrito, setCarrito] = useState([]);
-    const [productos, setProductos] = useState([]);
+    const [cantidad, setCantidad] = useState(1);
 
     const handleIncrease = () => {
         if (cantidad < stock) {
@@ -45,17 +38,19 @@ export const ProviderCarrito = ({ children }) => {
             );
         }
     };
+
     return (
         <CartContext.Provider
             value={{
                 carrito,
                 setCarrito,
-                handleAddToCart,
+                handleIncrease,
                 handleDecrease,
-                handleIncrease
+                handleAddToCart,
+                cantidad,
             }}
         >
             {children}
         </CartContext.Provider>
-    )
-} */
+    );
+};

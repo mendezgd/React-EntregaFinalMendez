@@ -8,8 +8,7 @@ import Navbar from './components/navbar/NavBar';
 import './App.css';
 import ItemDetailContainer from './pages/ItemDetailContainer';
 import Carrito from './pages/carrito';
-
-
+import { CartProvider } from './contexto/contexto-carrito';
 
 
 
@@ -17,7 +16,7 @@ function App() {
 
   return (
     <>
-      {/* <ProviderCarrito> */}
+      <CartProvider>
         <BrowserRouter>
           <Header titulo="Peladingui Gunshop" logo={<img src="./media/testpela.png" className="logo" alt="logo de la empresa" />} />
           <Navbar />
@@ -30,7 +29,7 @@ function App() {
             <Route path='/carrito' element={<Carrito />} />
           </Routes>
         </BrowserRouter>
-      {/* </ProviderCarrito> */}
+      </CartProvider>
     </>
   );
 }

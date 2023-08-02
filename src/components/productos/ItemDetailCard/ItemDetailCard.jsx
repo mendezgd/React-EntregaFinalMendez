@@ -1,7 +1,18 @@
 import React from "react";
 
-function ItemDetailCard({ img, nombre, precio, descripcion, categoria, stock, handleAddToCart, handleDecrease, handleIncrease, cantidad }) {
-
+function ItemDetailCard({
+  img,
+  nombre,
+  precio,
+  descripcion,
+  categoria,
+  stock,
+  handleAddToCart,
+  handleDecrease,
+  handleIncrease,
+  cantidad,
+  
+}) {
   return (
     <div className="card m-1">
       <div className="row g-0">

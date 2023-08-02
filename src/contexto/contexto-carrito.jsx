@@ -1,14 +1,13 @@
-import { createContext, useState } from "react";
+/* import { createContext, useState } from "react";
 
 const estadoInicial = {
     carrito: [],
-    productos: [],
     setCarrito: () => { },
     handleIncrease: () => { },
     handleDecrease: () => { },
     handleAddToCart: () => { },
     total: 0,
-};
+}
 
 export const CartContext = createContext(estadoInicial);
 
@@ -46,7 +45,6 @@ export const ProviderCarrito = ({ children }) => {
             );
         }
     };
-
     return (
         <CartContext.Provider
             value={{
@@ -54,12 +52,10 @@ export const ProviderCarrito = ({ children }) => {
                 setCarrito,
                 handleAddToCart,
                 handleDecrease,
-                handleIncrease,
-                productos,
-                setProductos,
+                handleIncrease
             }}
         >
             {children}
         </CartContext.Provider>
-    );
-};
+    )
+} */

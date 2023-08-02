@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-function ItemDetailCard({ img, nombre, precio, descripcion, categoria, stock, handleIncrease, handleDecrease, handleAddToCart, cantidad }) {
+function ItemDetailCard({ img, nombre, precio, descripcion, categoria, stock, handleAddToCart, handleDecrease, handleIncrease, cantidad }) {
 
   return (
     <div className="card m-1">

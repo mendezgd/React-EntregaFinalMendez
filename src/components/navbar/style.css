@@ -63,7 +63,7 @@ h1 {
     margin: 1rem;
 }
 
-.numerito {
+.contador {
     display: flex;
     justify-content: flex-end;
     flex-direction: row-reverse;

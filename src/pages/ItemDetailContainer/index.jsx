@@ -13,11 +13,11 @@ function ItemDetailContainer() {
     },
   });
 
-  const { carrito, agregarAlCarrito } = useContext(CartContext);
+  const { carrito, agregarAlCarrito, vaciarCarrito } = useContext(CartContext);
   const [cantidad, setCantidad] = useState(1);
 
+
   const producto = productos.find((producto) => producto.id === parseInt(id));
-  const stock = producto ? producto.stock : 0;
 
   const handleIncrease = () => {
     cantidad < producto.stock && setCantidad(cantidad + 1)
@@ -27,6 +27,10 @@ function ItemDetailContainer() {
     cantidad > 1 && setCantidad(cantidad - 1)
   };
 
+  const handleVaciar = () => {
+    vaciarCarrito();
+  }
+
   return (
     <div>
       <h3>Detalles de producto</h3>
@@ -35,6 +39,7 @@ function ItemDetailContainer() {
           {...producto}
           handleIncrease={handleIncrease}
           handleDecrease={handleDecrease}
+          handleVaciar={handleVaciar}
           agregarAlCarrito={() => { agregarAlCarrito(producto, cantidad) }}
           cantidad={cantidad}
         />

@@ -7,33 +7,13 @@ import Navbar from './components/navbar/NavBar';
 import './App.css';
 import ItemDetailContainer from './pages/ItemDetailContainer';
 import Carrito from './pages/carrito';
-import { CartContext } from './contexto/CartContext';
-import { useState } from 'react';
-
+import { CartProvider } from './contexto/CartContext';
 
 function App() {
 
-  const [carrito, setCarrito] = useState([]);
-
-  const agregarAlCarrito = (producto, cantidad) => {
-
-    const itemAgregado = { ...producto, cantidad };
-
-    const nuevoCarrito = [...carrito];
-    const estaEnElCarrito = (nuevoCarrito.find((producto) => producto.id === itemAgregado.id));
-
-    if (estaEnElCarrito) {
-      estaEnElCarrito.cantidad += cantidad;
-
-    } else {
-      nuevoCarrito.push(itemAgregado);
-    }
-    setCarrito(nuevoCarrito);
-
-  };
   return (
     <>
-      <CartContext.Provider value={{ carrito, agregarAlCarrito }}>
+      <CartProvider>
         <BrowserRouter>
           <Header titulo="Peladingui Gunshop" logo={<img src="./media/testpela.png" className="logo" alt="logo de la empresa" />} />
           <Navbar />
@@ -46,7 +26,7 @@ function App() {
             <Route path='/carrito' element={<Carrito />} />
           </Routes>
         </BrowserRouter>
-      </CartContext.Provider>
+      </CartProvider>
     </>
   );
 }

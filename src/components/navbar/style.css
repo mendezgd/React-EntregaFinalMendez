@@ -62,3 +62,14 @@ h1 {
 .agregarUno {
     margin: 1rem;
 }
+
+.numerito {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    align-content: space-between;
+    align-items: center;
+    font-size: smaller;
+    color: red;
+}

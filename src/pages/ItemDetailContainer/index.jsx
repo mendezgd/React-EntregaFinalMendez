@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import ItemDetailCard from '../../components/productos/ItemDetailCard/ItemDetailCard';
 import { useFetch } from '../../components/Constantes/Hooks/useFetch';
-import { useCartContext } from '../../contexto/contexto-carrito';
-
+import { useContext, useState } from 'react';
+import { CartContext } from '../../contexto/CartContext';
 
 function ItemDetailContainer() {
   const { id } = useParams();
@@ -13,11 +13,19 @@ function ItemDetailContainer() {
     },
   });
 
+  const { carrito, agregarAlCarrito } = useContext(CartContext);
+  const [cantidad, setCantidad] = useState(1);
+
   const producto = productos.find((producto) => producto.id === parseInt(id));
+  const stock = producto ? producto.stock : 0;
 
-  const { handleAddToCart, handleDecrease, handleIncrease, carrito, cantidad } = useCartContext();
+  const handleIncrease = () => {
+    cantidad < producto.stock && setCantidad(cantidad + 1)
+  };
 
-  console.log(producto);
+  const handleDecrease = () => {
+    cantidad > 1 && setCantidad(cantidad - 1)
+  };
 
   return (
     <div>
@@ -25,11 +33,10 @@ function ItemDetailContainer() {
       {producto && (
         <ItemDetailCard
           {...producto}
-          handleAddToCart={handleAddToCart}
-          handleDecrease={handleDecrease}
           handleIncrease={handleIncrease}
+          handleDecrease={handleDecrease}
+          agregarAlCarrito={() => { agregarAlCarrito(producto, cantidad) }}
           cantidad={cantidad}
-          carrito={carrito}
         />
       )}
     </div>

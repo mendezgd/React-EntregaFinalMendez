@@ -7,11 +7,10 @@ function ItemDetailCard({
   descripcion,
   categoria,
   stock,
-  handleAddToCart,
+  agregarAlCarrito,
   handleDecrease,
   handleIncrease,
   cantidad,
-  
 }) {
   return (
     <div className="card m-1">
@@ -35,7 +34,7 @@ function ItemDetailCard({
               <span className="cantidad">{cantidad}</span>
               <button onClick={handleIncrease} className='btn btn-secondary btn-sm'>+</button>
             </div>
-            <button onClick={handleAddToCart} className='btn btn-success btn-sm agregar'>Agregar al carrito</button>
+            <button onClick={agregarAlCarrito} className='btn btn-success btn-sm agregar'>Agregar al carrito</button>
           </div>
         </div>
       </div>

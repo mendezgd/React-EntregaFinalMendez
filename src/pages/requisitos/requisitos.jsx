@@ -11,7 +11,7 @@ const Requisitos = () => {
                             <div className="card1">
                                 <div className="card" style={{ width: '18rem' }}>
                                     <img
-                                        src="../../public/media/doc2.jpg"
+                                        src="../media/doc2.jpg"
                                         className="card-img-top"
                                         alt="imagen de documento"
                                         style={{ width: '18rem', height: '15rem' }}
@@ -31,7 +31,7 @@ const Requisitos = () => {
                             <div className="card2">
                                 <div className="card" style={{ width: '18rem' }}>
                                     <img
-                                        src="../../public/media/examen1.jpg"
+                                        src="../media/examen1.jpg"
                                         className="card-img-top"
                                         alt="examen físico"
                                         style={{ width: '18rem', height: '15rem' }}
@@ -49,7 +49,7 @@ const Requisitos = () => {
                             <div className="card3">
                                 <div className="card" style={{ width: '18rem' }}>
                                     <img
-                                        src="../../public/media/poligono.jpg"
+                                        src="../media/poligono.jpg"
                                         className="card-img-top"
                                         alt="hombre practicando tiro"
                                         style={{ width: '18rem', height: '15rem' }}
@@ -68,7 +68,7 @@ const Requisitos = () => {
                             <div className="card4">
                                 <div className="card" style={{ width: '18rem' }}>
                                     <img
-                                        src="../../public/media/pila.jpg"
+                                        src="../media/pila.jpg"
                                         className="card-img-top"
                                         alt="pila de papeles"
                                         style={{ width: '18rem', height: '15rem' }}

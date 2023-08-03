@@ -8,18 +8,17 @@ const Carrito = () => {
     <div>
       <h1>Carrito</h1>
       {carrito.map((producto) => (
-        <div key={producto.id}>
-          <h3>{producto.nombre}</h3>
-          <img
-            src={`../media/${producto.img}`} // Use 'producto.img' instead of 'img'
-            alt={producto.nombre} // Use 'producto.nombre' instead of 'nombre'
-            className="card-img-top item"
-            width="150px"
-            height="150px"
-          />
-          <p>{producto.descripcion}</p>
-          <p>{producto.stock}</p>
-          <p>${producto.precio}</p>
+        <div className="card mb-3">
+          <div key={producto.id}>
+            <img src={`../media/${producto.img}`} alt={producto.nombre} className="card-img-top" />
+            <div className="card-body">
+              <h5 className="card-title">{producto.nombre}</h5>
+              <p className="card-text">{producto.descripcion}</p>
+              <p className="card-text">stock: {producto.stock}</p>
+              <p className="card-text">precio por unidad: ${producto.precio}</p>
+              
+            </div>
+          </div>
         </div>
       ))}
     </div>

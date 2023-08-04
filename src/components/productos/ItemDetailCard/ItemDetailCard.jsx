@@ -10,7 +10,6 @@ function ItemDetailCard({
   agregarAlCarrito,
   handleDecrease,
   handleIncrease,
-  handleVaciar,
   cantidad,
 }) {
   return (
@@ -36,7 +35,6 @@ function ItemDetailCard({
               <button onClick={handleIncrease} className='btn btn-secondary btn-sm'>+</button>
             </div>
             <button onClick={agregarAlCarrito} className='btn btn-success btn-sm agregar'>Agregar al carrito</button>
-            <button onClick={handleVaciar} className='btn btn-danger btn-sm vaciar'>Vaciar el carrito</button>
           </div>
         </div>
       </div>

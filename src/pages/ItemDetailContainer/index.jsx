@@ -16,6 +16,7 @@ function ItemDetailContainer() {
   const { carrito, agregarAlCarrito, vaciarCarrito } = useContext(CartContext);
   const [cantidad, setCantidad] = useState(1);
 
+  console.log({carrito});
 
   const producto = productos.find((producto) => producto.id === parseInt(id));
 

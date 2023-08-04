@@ -1,22 +1,20 @@
 import { useParams } from 'react-router-dom';
 import ItemDetailCard from '../../components/productos/ItemDetailCard/ItemDetailCard';
-import { useFetch } from '../../components/Constantes/Hooks/useFetch';
 import { useContext, useState } from 'react';
 import { CartContext } from '../../contexto/CartContext';
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase/data";
+import { useEffect } from 'react';
+
+
 
 function ItemDetailContainer() {
   const { id } = useParams();
-  const { data: productos } = useFetch('/productos/productos.json', {
-    method: 'GET',
-    header: {
-      'Content-Type': 'application/json',
-    },
-  });
-
+  
   const { carrito, agregarAlCarrito, vaciarCarrito } = useContext(CartContext);
   const [cantidad, setCantidad] = useState(1);
 
-  console.log({carrito});
+  console.log({ carrito });
 
   const producto = productos.find((producto) => producto.id === parseInt(id));
 
@@ -31,6 +29,17 @@ function ItemDetailContainer() {
   const handleVaciar = () => {
     vaciarCarrito();
   }
+
+  useEffect(() => {
+
+    const productosRef = collection(db, "productos");
+
+    getDocs(productosRef)
+      .then((resp) => {
+        console.log(resp)
+      })
+
+  }, [categoria])
 
   return (
     <div>

@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { CartContext } from "../../contexto/CartContext";
 
 const Carrito = () => {
-  const { carrito, vaciarCarrito, eliminarDelCarrito } = useContext(CartContext);
+  const { carrito, vaciarCarrito, eliminarDelCarrito, calcularTotalCarrito } = useContext(CartContext);
 
   const handleVaciar = () => {
     vaciarCarrito();
@@ -25,10 +26,11 @@ const Carrito = () => {
           </div>
         </div>
       ))}
-      <div className="d-grid gap-2">
-        <button className='btn btn-success btn-sm checkout'>Proceder a checkout</button>
-        <button onClick={handleVaciar} className='btn btn-danger btn-sm vaciar'>Vaciar el carrito</button>
+      <div className="total">
+        <h5>Total ${calcularTotalCarrito()}</h5>
       </div>
+      <button onClick={handleVaciar} className='btn btn-danger btn-sm vaciar'>Vaciar el carrito</button>
+      <Link to="/checkout"><button className='btn btn-success btn-sm checkout'>Proceder a checkout</button></Link>
     </div>
   );
 };

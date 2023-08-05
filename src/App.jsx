@@ -8,6 +8,7 @@ import './App.css';
 import ItemDetailContainer from './pages/ItemDetailContainer';
 import Carrito from './pages/carrito';
 import { CartProvider } from './contexto/CartContext';
+import Checkout from './pages/checkout.jsx/checkout';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
             <Route path='/requisitos' element={<Requisitos />} />
             <Route path='/donde' element={<Donde />} />
             <Route path='/carrito' element={<Carrito />} />
+            <Route path='/checkout' element={<Checkout />} />
           </Routes>
         </BrowserRouter>
       </CartProvider>

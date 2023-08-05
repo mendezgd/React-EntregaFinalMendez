@@ -1,16 +1,24 @@
 import { useParams } from 'react-router-dom';
 import ItemDetailCard from '../../components/productos/ItemDetailCard/ItemDetailCard';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../contexto/CartContext';
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../firebase/data";
-import { useEffect } from 'react';
-
-
+import { db } from '../../firebase/data'
+import { collection, getDocs } from 'firebase/firestore';
 
 function ItemDetailContainer() {
   const { id } = useParams();
-  
+
+  useEffect(() => {
+
+    const productosRef = collection(db, "productos");
+
+    getDocs(productosRef)
+      .then((resp) => {
+        console.log(resp)
+      })
+
+  }, [categoria])
+
   const { carrito, agregarAlCarrito, vaciarCarrito } = useContext(CartContext);
   const [cantidad, setCantidad] = useState(1);
 
@@ -29,17 +37,6 @@ function ItemDetailContainer() {
   const handleVaciar = () => {
     vaciarCarrito();
   }
-
-  useEffect(() => {
-
-    const productosRef = collection(db, "productos");
-
-    getDocs(productosRef)
-      .then((resp) => {
-        console.log(resp)
-      })
-
-  }, [categoria])
 
   return (
     <div>
